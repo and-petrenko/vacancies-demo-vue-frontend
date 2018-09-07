@@ -1,5 +1,5 @@
 <template>
-  <main-layout>
+  <div>
     <div class="centered">
       <h1 class="md-display-1" >{{ employerName }}</h1>
     </div>
@@ -82,11 +82,10 @@
         Some internal error happened and vacancy was not saved :(
       </md-snackbar>
     </form>
-  </main-layout>
+  </div>
 </template>
 
 <script>
-  import MainLayout from '../Main.vue'
   import {
     required
   } from 'vuelidate/lib/validators'
@@ -94,9 +93,6 @@
   import {mapState} from 'vuex'
 
   export default {
-    components: {
-      MainLayout
-    },
     mixins: [validationMixin],
     computed: mapState({
       employerName: state => (state.employerNewVacancy || {}).name,

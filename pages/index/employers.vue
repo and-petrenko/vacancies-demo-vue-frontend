@@ -1,5 +1,5 @@
 <template>
-  <main-layout>
+  <div>
     <div v-if="isFailed">
       <Error/>
     </div>
@@ -13,25 +13,23 @@
           <md-table-cell md-label="Company name" class="company-name">{{ item.name }}</md-table-cell>
           <md-table-cell md-label="Actions">
             <md-button class="md-raised" v-on:click="() => addVacancy(item)">
-              <router-link to="/employers/AddVacancy">
+              <nuxt-link to="/addVacancy">
                 Add Vacancy
-              </router-link>
+              </nuxt-link>
             </md-button>
           </md-table-cell>
         </md-table-row>
       </md-table>
     </div>
-  </main-layout>
+  </div>
 </template>
 
 <script>
-  import MainLayout from '../Main'
   import Error from '../Error'
   import {mapState} from 'vuex'
 
   export default {
     components: {
-      MainLayout,
       Error
     },
     computed: mapState({

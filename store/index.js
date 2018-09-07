@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
+const REST_SERVICE = 'http://localhost:4321'
+
 Vue.use(Vuex)
 
 const state = {
@@ -18,13 +20,13 @@ const state = {
 const actions = {
   fetchEmployers ({commit}) {
     axios
-      .get('http://localhost:4321/employers')
+      .get(`${REST_SERVICE}/employers`)
       .then(result => commit('setEmployers', result.data))
       .catch(() => commit('setEmployersError', true))
   },
   fetchVacancies ({commit}) {
     axios
-      .get('http://localhost:4321/vacancies')
+      .get(`${REST_SERVICE}/vacancies`)
       .then(result => commit('setVacancies', result.data))
       .catch(() => commit('setVacanciesError', true))
   },
@@ -34,7 +36,7 @@ const actions = {
   saveVacancy ({commit}, {vacancy}) {
     commit('isVacancySaving', true)
     axios
-      .post('http://localhost:4321/vacancies', {body: {...vacancy, employerId: this.state.employerNewVacancy.id}})
+      .post(`${REST_SERVICE}/vacancies`, {...vacancy, employerId: this.state.employerNewVacancy.id})
       .then(() => this.$router.push('/vacancies'))
       .then(() => commit('isVacancySavedSuccessfully', true))
       .then(() => window.setTimeout(() => commit('isVacancySavedSuccessfully', false), 2000))
