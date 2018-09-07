@@ -13,8 +13,10 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "nuxt": "^1.0.0",
-    "vue-material": "latest"
+    "vue-material": "latest",
+    "vuelidate": "^0.7.4"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
