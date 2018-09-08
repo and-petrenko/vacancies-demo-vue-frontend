@@ -50,7 +50,7 @@
   }
 
   .company-logo {
-    /*width: 200px;*/
+    width: 200px;
     height: 40px;
     max-height: 40px;
   }
