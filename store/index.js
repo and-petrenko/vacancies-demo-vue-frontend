@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
-const REST_SERVICE = 'http://localhost:4321'
+const REST_SERVICE = 'http://profitsoft.ua:4321'
 
 Vue.use(Vuex)
 
@@ -37,7 +37,11 @@ const actions = {
     commit('isVacancySaving', true)
     axios
       .post(`${REST_SERVICE}/vacancies`, {...vacancy, employerId: this.state.employerNewVacancy.id})
-      .then(() => this.$router.push('/vacancies'))
+      .then((response) => {
+        const vacancy = {...response.data, employerName: this.state.employerNewVacancy.name}
+        commit('addVacancy', vacancy)
+        this.$router.push('/vacancies')
+      })
       .then(() => commit('isVacancySavedSuccessfully', true))
       .then(() => window.setTimeout(() => commit('isVacancySavedSuccessfully', false), 2000))
       .catch(() => commit('isVacancySavingError'))
@@ -55,6 +59,9 @@ const mutations = {
   setVacancies (state, vacancies) {
     state.vacancies = vacancies
     state.isVacanciesFailed = false
+  },
+  addVacancy (state, vacancy) {
+    state.vacancies.push(vacancy)
   },
   setVacanciesError (state, value) {
     state.isVacanciesFailed = value

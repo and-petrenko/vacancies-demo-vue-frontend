@@ -4,20 +4,32 @@
       <Error/>
     </div>
     <div v-else class="table">
-      <md-table v-model="vacancies" md-card>
-        <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="single">
-          <md-table-cell md-label="№" md-numeric>{{ item.id }}</md-table-cell>
-          <md-table-cell md-label="Company name" class="company-name">{{ item.employerName }}</md-table-cell>
-          <md-table-cell md-label="Place">{{ item.place }}</md-table-cell>
-          <md-table-cell md-label="Title">{{ item.title }}</md-table-cell>
-          <md-table-cell md-label="Description">{{ item.description }}</md-table-cell>
-          <md-table-cell md-label="Requirements">{{ item.requirements }}</md-table-cell>
-          <md-table-cell md-label="Experience">{{ item.experience }}</md-table-cell>
-          <md-table-cell md-label="Subcategories">
-            <md-chip v-for="(tag, idx) in item.tags" :key="{idx}">{{ tag }}</md-chip>
-          </md-table-cell>
-        </md-table-row>
-      </md-table>
+      <md-list :md-expand-single="true">
+        <md-list-item class="job-item" v-for="vacancy in vacancies" :key="vacancy.id" md-expand>
+          <div class="job-header">
+            <b>{{ vacancy.title }}</b>
+          </div>
+          <div slot="md-expand">
+            <div class="job-section" v-if="vacancy.employerName">
+              <b>{{ vacancy.employerName }}</b>
+              <p>{{ vacancy.description }}</p>
+            </div>
+            <div class="job-section" v-if="vacancy.requirements">
+              <b>Job Requirements:</b>
+              <p>{{ vacancy.requirements }}</p>
+            </div>
+            <div class="job-section" v-if="vacancy.experience">
+              <b>Required Experience:</b>&nbsp;{{ vacancy.experience }}&nbsp;years
+            </div>
+            <div class="job-section" v-if="vacancy.place">
+              <b>Location:</b>&nbsp;{{ vacancy.place }}
+            </div>
+            <div class="job-section" v-if="vacancy.tags">
+              <b>Sub Categories:</b>&nbsp;{{ vacancy.tags.join(', ') }}
+            </div>
+          </div>
+        </md-list-item>
+      </md-list>
     </div>
     <md-snackbar :md-active.sync="isNewVacancySaved">
       The vacancy was saved successfully!
@@ -46,13 +58,22 @@
     padding-top: 10px;
   }
 
-  .company-logo {
-    /*width: 200px;*/
-    height: 40px;
-    max-height: 40px;
+  .job-item {
+    background-color: #FFFDE6;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-box-shadow: 1px 1px 0.5px 0 rgba(0,0,0,0.31);
+    -moz-box-shadow: 1px 1px .5px 0 rgba(0,0,0,0.31);
+    box-shadow: 1px 1px 1px 0.5px rgba(0,0,0,0.31);
   }
 
-  .company-name {
-    height: 80px;
+  .job-header {
+    width: 100%;
+    text-align: right;
+  }
+
+  .job-section {
+    padding: 10px;
   }
 </style>
