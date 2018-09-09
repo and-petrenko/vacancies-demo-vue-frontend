@@ -59,7 +59,7 @@
         <Error/>
       </div>
       <div v-else class="jobs">
-        <md-list class="job-list" :md-expand-single="true">
+        <md-list class="job-list">
           <md-list-item class="job-item" v-for="vacancy in vacancies" :key="vacancy.id" md-expand>
             <div class="job-header">
               <b>{{ vacancy.title }}</b>
@@ -175,4 +175,9 @@
     width: 100%;
     white-space: normal;
   }
+
+  .md-list-item-container {
+    background: unset !important;
+  }
+
 </style>
