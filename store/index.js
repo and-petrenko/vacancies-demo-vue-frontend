@@ -45,6 +45,14 @@ const actions = {
       .then(() => commit('isVacancySavedSuccessfully', true))
       .then(() => window.setTimeout(() => commit('isVacancySavedSuccessfully', false), 2000))
       .catch(() => commit('isVacancySavingError'))
+  },
+  filterVacancies ({commit}, filter) {
+    axios
+      .post(`${REST_SERVICE}/filterVacancies`, filter)
+      .then((response) => {
+        commit('setVacancies', response.data)
+      })
+      .catch(() => commit('setVacanciesError', true))
   }
 }
 

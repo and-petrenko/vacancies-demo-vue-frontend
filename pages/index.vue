@@ -2,26 +2,29 @@
   <section>
     <div class="main">
       <div class="main-container">
-        <div class="menu-container">
-          <a class="header-link" href="https://www.drushim.co.il/" title="NAME">
-            <img src="https://www.drushim.co.il/images/logo.png" alt="localhost"/>
-          </a>
+        <div>
+          <div class="menu-container">
+            <a class="header-link" href="https://www.drushim.co.il/" title="NAME">
+              <img src="https://www.drushim.co.il/images/logo.png" alt="localhost"/>
+            </a>
+          </div>
+          <md-menu class="menu">
+            <md-button class="menu-button">
+              <nuxt-link class="link-content" to="/vacancies">
+                Vacancies
+              </nuxt-link>
+            </md-button>
+
+            <md-button class="menu-button">
+              <nuxt-link class="link-content" to="/employers">
+                Employers
+              </nuxt-link>
+            </md-button>
+          </md-menu>
         </div>
-        <md-menu class="menu">
-          <md-button class="menu-button">
-            <nuxt-link class="link-content" to="/vacancies">
-              Vacancies
-            </nuxt-link>
-          </md-button>
-
-          <md-button class="menu-button">
-            <nuxt-link class="link-content" to="/employers">
-              Employers
-            </nuxt-link>
-          </md-button>
-        </md-menu>
-
-        <nuxt-child/>
+        <div>
+          <nuxt-child/>
+        </div>
       </div>
     </div>
   </section>

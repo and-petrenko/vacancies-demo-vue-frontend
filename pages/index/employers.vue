@@ -4,7 +4,7 @@
       <Error/>
     </div>
     <div v-else class="table">
-      <md-table v-model="employers" md-card>
+      <md-table class="employers-list" v-model="employers" md-card>
         <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="single">
           <md-table-cell md-label="№" md-numeric>{{ item.id }}</md-table-cell>
           <md-table-cell md-label="Logo">
@@ -47,6 +47,11 @@
 <style>
   .table {
     padding-top: 10px;
+    width: 100%;
+  }
+
+  .employers-list {
+    width: 100%;
   }
 
   .company-logo {
