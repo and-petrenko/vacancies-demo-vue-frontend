@@ -142,12 +142,12 @@
 
   .filter-form {
     width: 300px;
-    margin-top: 10px;
     margin-right: 10px;
   }
 
   .jobs {
     width: 100%;
+    margin-top: -8px;
     margin-left: 10px;
   }
 
@@ -171,7 +171,7 @@
   }
 
   .job-section {
-    padding: 10px;
+    padding-bottom: 10px;
     width: 100%;
     white-space: normal;
   }

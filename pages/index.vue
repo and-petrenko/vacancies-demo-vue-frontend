@@ -4,7 +4,7 @@
       <div class="main-container">
         <div>
           <div class="menu-container">
-            <a class="header-link" href="https://www.drushim.co.il/" title="NAME">
+            <a class="header-link" href="/" title="NAME">
               <img src="https://www.drushim.co.il/images/logo.png" alt="localhost"/>
             </a>
           </div>
@@ -44,7 +44,7 @@
     font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
     display: flex;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f2f2f2;
     justify-content: center;
   }
